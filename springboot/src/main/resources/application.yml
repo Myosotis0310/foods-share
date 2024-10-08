@@ -1,0 +1,30 @@
+server:
+  address: localhost
+  port: 9090
+
+# 数据库配置
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root   #你本地的数据库用户名
+    password: 7777 #你本地的数据库密码
+    url: jdbc:mysql://localhost:3306/xm-foods?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+  servlet:
+    multipart:
+      max-file-size: 100MB  #设置上传文件的最大大小
+      max-request-size: 100MB #设置请求的最大大小
+
+# 配置mybatis实体和xml映射
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.group2.foodshare.entity # 创建实体类别名
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl # 设置 MyBatis 的日志实现类,这用的是StdOutImpl，会输出到标准输出（控制台）
+    map-underscore-to-camel-case: true  # 启用 MyBatis 的自动驼峰命名转换
+
+# 分页
+pagehelper:
+  helper-dialect: mysql # 指定数据库类型
+  reasonable: true  # 设置为true：表示启用合理化分页参数，会自动判断分页参数是否合法，例如页数和每页数量。默认值为 false。
+  support-methods-arguments: true # 设置为 true 表示支持通过 Mapper 接口方法的参数来传递分页参数，可以直接在接口方法的参数中指定分页参数。默认值为 false。
+  params: count=countSql  # 设置为 count=countSql 表示在进行分页查询时，使用 countSql 属性来指定 count 查询的条件。这通常用于当分页查询条件复杂时，可以提供一个单独的 count 查询语句，以提高性能
