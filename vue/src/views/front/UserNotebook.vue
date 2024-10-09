@@ -77,9 +77,9 @@ export default {
           } else {
             this.$message.error(res.msg)  // 弹出错误的信息
           }
-        })
+        });
       }).catch(() => {
-      })
+      });
     },
     goDetail(path) {
       location.href = path
@@ -92,7 +92,7 @@ export default {
       }
       this.$request.get(url).then(res => {
         this.notebookList = res.data || []
-      })
+      });
     }
   }
 }

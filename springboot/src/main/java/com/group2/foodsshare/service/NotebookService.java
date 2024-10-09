@@ -8,7 +8,7 @@ import java.util.List;
 
 /**
  * @Author Joey
- * @Date 2024/10/9
+ * @Date 2024/10
  */
 public class NotebookService {
 
@@ -24,11 +24,21 @@ public class NotebookService {
     }
 
     /**
-     * 查询所有
+     * 查询所有发布
      * @param notebook
      * @return
      */
     public List<Notebook> selectAll(Notebook notebook) {
+
+        return null;
+    }
+
+    /**
+     * 查询所有收藏
+     * @param notebook
+     * @return
+     */
+    public List<Notebook> selectCollect(Notebook notebook) {
 
         return null;
     }

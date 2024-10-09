@@ -31,13 +31,24 @@ public class NotebookController {
     }
 
     /**
-     * 查询所有
+     * 查询所有发布
      * @param notebook
      * @return
      */
     @GetMapping("/selectAll")
     public Result selectAll(Notebook notebook){
         List<Notebook> list = notebookService.selectAll(notebook);
+        return Result.success(list);
+    }
+
+    /**
+     * 查询所有收藏
+     * @param notebook
+     * @return
+     */
+    @GetMapping("/selectCollect")
+    public Result selectCollect(Notebook notebook){
+        List<Notebook> list = notebookService.selectCollect(notebook);
         return Result.success(list);
     }
 
