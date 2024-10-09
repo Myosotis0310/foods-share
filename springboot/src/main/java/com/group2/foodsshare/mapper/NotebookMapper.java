@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Update;
 import java.util.List;
 
 /**
- * 操作notebook相关数据接口
+ * 操作Notebook相关数据接口
  */
 public interface NotebookMapper {
 

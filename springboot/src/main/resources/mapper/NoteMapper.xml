@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.group2.foodsshare.mapper.NotebookMapper">
+
+    <sql id="Base_Column_List">
+        id,title,cover,content,user_id,date,userName, avatar,count,status
+    </sql>
+
+    <insert id="insert" parameterType="com.group2.foodsshare.entity.Notebook" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO notebook
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">id,</if>
+            <if test="title != null">title,</if>
+            <if test="cover != null">cover,</if>
+            <if test="content != null">content,</if>
+            <if test="userId != null">user_id,</if>
+            <if test="count != null">count,</if>
+            <if test="date != null">date,</if>
+            <if test="status != null">status,</if>
+        </trim>
+        <trim prefix="VALUES (" suffix=")" suffixOverrides=",">
+            <if test="id != null">#{id},</if>
+            <if test="title != null">#{title},</if>
+            <if test="cover != null">#{cover},</if>
+            <if test="content != null">#{content},</if>
+            <if test="userId != null">#{userId},</if>
+            <if test="count != null">#{count},</if>
+            <if test="date != null">#{date},</if>
+            <if test="status != null">#{status},</if>
+        </trim>
+    </insert>
+
+</mapper>
