@@ -14,11 +14,13 @@ public class Notebook {
     private String cover;
     /** 内容 */
     private String content;
+    /** 浏览量 */
     private Integer count;
     /** 用户ID */
     private Integer userId;
     /** 发布日期 */
     private String date;
+    /** 审核状态 */
     private String status;
 
     private String userName;
