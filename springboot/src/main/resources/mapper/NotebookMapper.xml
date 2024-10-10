@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.group2.foodsshare.mapper.NotebookMapper">
+
+    <sql id="Base_Column_List">
+        id,title,cover,content,user_id,date,userName, avatar,count,status
+    </sql>
+
+    <select id="selectAll" resultType="com.group2.foodsshare.entity.Notebook">
+        select notebook.*, user.name as userName, user.avatar as avatar
+        from notebook
+        left join user
+        on notebook.user_id = user.id
+        <where>
+            <if test="title != null"> and notebook.title like concat('%', #{title}, '%')</if>
+            <if test="status != null"> and notebook.status = #{status}</if>
+            <if test="userId != null"> and notebook.user_id = #{userId}</if>
+        </where>
+        order by notebook.id desc
+    </select>
+
+    <select id="selectById" resultType="com.group2.foodsshare.entity.Notebook">
+        select notebook.*, user.name as userName, user.avatar as avatar
+        from notebook
+        left join user
+        on notebook.user_id = user.id where notebook.id = #{id}
+    </select>
+
+    <select id="selectCollect" resultType="com.group2.foodsshare.entity.Notebook">
+        select notebook.*, user.name as userName, user.avatar as avatar
+        from collect
+        left join notebook
+        on collect.fid = notebook.id
+        left join user
+        on notebook.user_id = user.id
+        where collect.module = '笔记' and collect.user_id = #{userId} and notebook.title is not null
+        order by collect.id desc
+    </select>
+
+    <delete id="deleteById">
+        delete from notebook
+        where  id = #{id}
+    </delete>
+
+    <insert id="insert" parameterType="com.group2.foodsshare.entity.Notebook" useGeneratedKeys="true" keyProperty="id">
+        insert into notebook
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">id,</if>
+            <if test="title != null">title,</if>
+            <if test="cover != null">cover,</if>
+            <if test="content != null">content,</if>
+            <if test="userId != null">user_id,</if>
+            <if test="date != null">date,</if>
+            <if test="count != null">count,</if>
+            <if test="status != null">status,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">#{id},</if>
+            <if test="title != null">#{title},</if>
+            <if test="cover != null">#{cover},</if>
+            <if test="content != null">#{content},</if>
+            <if test="userId != null">#{userId},</if>
+            <if test="date != null">#{date},</if>
+            <if test="count != null">#{count},</if>
+            <if test="status != null">#{status},</if>
+        </trim>
+    </insert>
+<!---->
+    <update id="updateById" parameterType="com.group2.foodsshare.entity.Notebook">
+        update notebook
+        <set>
+            <if test="title != null">
+                title = #{title},
+            </if>
+            <if test="cover != null">
+                cover = #{cover},
+            </if>
+            <if test="content != null">
+                content = #{content},
+            </if>
+            <if test="userId != null">
+                user_id = #{userId},
+            </if>
+            <if test="date != null">
+                date = #{date},
+            </if>
+            <if test="count != null">
+                count = #{count},
+            </if>
+            <if test="status != null">
+                status = #{status},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+</mapper>

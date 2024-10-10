@@ -65,7 +65,7 @@ export default {
     this.load()
   },
   methods: {
-    changeStatus(row) {
+    /*changeStatus(row) {
       this.$request.put('/orders/cancel', row).then(res => {
         if (res.code === '200') {
           this.$message.success('操作成功')
@@ -74,7 +74,7 @@ export default {
           this.$message.error(res.msg)  // 弹出错误的信息
         }
       })
-    },
+    },*/
     addOrder() {
       this.$refs.formRef.validate((valid) => {
         if (valid) {

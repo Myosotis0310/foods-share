@@ -1,52 +1,43 @@
 package com.group2.foodsshare.controller;
 
-import cn.hutool.core.lang.Dict;
 
 import com.github.pagehelper.PageInfo;
 import com.group2.foodsshare.common.Result;
-import com.group2.foodsshare.entity.Notebook;
-import com.group2.foodsshare.service.NotebookService;
+import com.group2.foodsshare.entity.Goods;
+import com.group2.foodsshare.service.GoodsService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
 
 /**
- * 美食笔记前端操作接口
+ * 商品信息前端操作接口
  **/
 @RestController
-@RequestMapping("/notebook")
-public class NotebookController {
+@RequestMapping("/goods")
+public class GoodsController {
 //
     @Resource
-    private NotebookService notebookService;
-
-
-    @PutMapping("/updateCount/{id}")
-    public Result updateCount(@PathVariable Integer id) {
-        notebookService.updateCount(id);
-        return Result.success();
-    }
+    private GoodsService goodsService;
 
     /**
      * 根据ID查询
      */
     @GetMapping("/selectById/{id}")
     public Result selectById(@PathVariable Integer id) {
-        Notebook notebook = notebookService.selectById(id);
-        return Result.success(notebook);
+        Goods goods = goodsService.selectById(id);
+        return Result.success(goods);
     }
 
     /**
      * 分页查询
      */
     @GetMapping("/selectPage")
-    public Result selectPage(Notebook notebook,
+    public Result selectPage(Goods goods,
                              @RequestParam(defaultValue = "1") Integer pageNum,
                              @RequestParam(defaultValue = "10") Integer pageSize) {
-        PageInfo<Notebook> page = notebookService.selectPage(notebook, pageNum, pageSize);
+        PageInfo<Goods> page = goodsService.selectPage(goods, pageNum, pageSize);
         return Result.success(page);
     }
-
 
 }
