@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.group2.foodsshare.mapper.GoodsMapper">
+
+    <sql id="Base_Column_List">
+        id,name,descr,img,price,unit,store,address,content,date
+    </sql>
+
+    <select id="selectAll" resultType="com.group2.foodsshare.entity.Goods">
+        select
+        <include refid="Base_Column_List" />
+        from goods
+        <where>
+            <if test="id != null"> and id = #{id}</if>
+            <if test="name != null"> and name like concat('%', #{name}, '%')</if>
+            <if test="descr != null"> and descr like concat('%', #{descr}, '%')</if>
+            <if test="img != null"> and img like concat('%', #{img}, '%')</if>
+            <if test="price != null"> and price = #{price}</if>
+            <if test="unit != null"> and unit like concat('%', #{unit}, '%')</if>
+            <if test="store != null"> and store = #{store}</if>
+            <if test="address != null"> and address like concat('%', #{address}, '%')</if>
+            <if test="content != null"> and content like concat('%', #{content}, '%')</if>
+            <if test="date != null"> and date like concat('%', #{date}, '%')</if>
+        </where>
+        order by id desc
+    </select>
+
+    <select id="selectById" resultType="com.group2.foodsshare.entity.Goods">
+        select
+        <include refid="Base_Column_List" />
+        from goods
+        where id = #{id}
+    </select>
+
+    <update id="updateById" parameterType="com.group2.foodsshare.entity.Goods">
+        update goods
+        <set>
+            <if test="name != null">
+                name = #{name},
+            </if>
+            <if test="descr != null">
+                descr = #{descr},
+            </if>
+            <if test="img != null">
+                img = #{img},
+            </if>
+            <if test="price != null">
+                price = #{price},
+            </if>
+            <if test="unit != null">
+                unit = #{unit},
+            </if>
+            <if test="store != null">
+                store = #{store},
+            </if>
+            <if test="address != null">
+                address = #{address},
+            </if>
+            <if test="content != null">
+                content = #{content},
+            </if>
+            <if test="date != null">
+                date = #{date},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+</mapper>

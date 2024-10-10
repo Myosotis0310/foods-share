@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.group2.foodsshare.mapper.CollectMapper">
+
+    <select id="selectCollect" resultType="com.group2.foodsshare.entity.Collect">
+        select * from collect
+         <where>
+            <if test="fid != null">and fid = #{fid}</if>
+            <if test="userId != null">and user_id = #{userId}</if>
+            <if test="module != null">and module = #{module}</if>
+         </where>
+    </select>
+
+</mapper>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.group2.foodsshare.mapper.FoodsMapper">
+
+    <sql id="Base_Column_List">
+        id,name,cover,descr,skills,user_id,time,count,material,steps,status,category
+    </sql>
+
+    <select id="selectAll" resultType="com.group2.foodsshare.entity.Foods">
+        select foods.*, user.name as userName, user.avatar as avatar
+        from foods
+        left join user
+        on foods.user_id = user.id
+        <where>
+            <if test="name != null"> and foods.name like concat('%', #{name}, '%')</if>
+            <if test="status != null"> and foods.status = #{status}</if>
+            <if test="userId != null"> and foods.user_id = #{userId}</if>
+            <if test="category != null"> and foods.category = #{category}</if>
+        </where>
+        order by foods.id desc
+    </select>
+
+    <select id="selectById" resultType="com.group2.foodsshare.entity.Foods">
+        select foods.*, user.name as userName, user.avatar as avatar
+        from foods
+        left join user
+        on foods.user_id = user.id
+        where foods.id = #{id}
+    </select>
+
+    <select id="selectTop10" resultType="com.group2.foodsshare.entity.Foods">
+        select foods.*, user.name as userName
+        from foods
+        left join user
+        on foods.user_id = user.id
+        where status = '审核通过'
+        order by count desc
+        limit 10
+    </select>
+
+
+</mapper>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.group2.foodsshare.mapper.CategoryMapper">
+
+    <sql id="Base_Column_List">
+        id,name,type
+    </sql>
+
+    <select id="selectAll" resultType="com.group2.foodsshare.entity.Category">
+        select
+        <include refid="Base_Column_List" />
+        from category
+        <where>
+            <if test="name != null"> and name like concat('%', #{name}, '%')</if>
+        </where>
+        order by id desc
+    </select>
+
+    <select id="selectById" resultType="com.group2.foodsshare.entity.Category">
+        select
+        <include refid="Base_Column_List" />
+        from category
+        where id = #{id}
+    </select>
+
+    <delete id="deleteById">
+        delete from category
+        where  id = #{id}
+    </delete>
+
+
+
+</mapper>
