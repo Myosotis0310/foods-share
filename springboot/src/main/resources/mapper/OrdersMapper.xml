@@ -7,6 +7,7 @@
     <sql id="Base_Column_List">
         id,order_no,name,img,price,num,total,status,time,user_id,address,phone,goods_id
     </sql>
+<!--    -->
     <insert id="insert" parameterType="com.group2.foodsshare.entity.Orders" useGeneratedKeys="true" keyProperty="id">
         insert into orders
         <trim prefix="(" suffix=")" suffixOverrides=",">

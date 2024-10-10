@@ -17,7 +17,7 @@ import javax.annotation.Resource;
  */
 @RestController
 public class WebController {
-
+//
     @Resource
     private AdminService adminService;
 

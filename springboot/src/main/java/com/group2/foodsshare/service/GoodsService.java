@@ -15,7 +15,7 @@ import java.util.List;
  **/
 @Service
 public class GoodsService {
-
+//
     @Resource
     private GoodsMapper goodsMapper;
 

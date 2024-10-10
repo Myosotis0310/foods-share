@@ -36,7 +36,7 @@
         delete from user
         where  id = #{id}
     </delete>
-
+<!---->
     <insert id="insert" parameterType="com.group2.foodsshare.entity.User" useGeneratedKeys="true">
         insert into user
         <trim prefix="(" suffix=")" suffixOverrides=",">

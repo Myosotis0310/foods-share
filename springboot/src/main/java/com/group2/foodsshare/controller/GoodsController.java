@@ -16,7 +16,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/goods")
 public class GoodsController {
-
+//
     @Resource
     private GoodsService goodsService;
 

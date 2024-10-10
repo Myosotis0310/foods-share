@@ -7,7 +7,7 @@
     <sql id="Base_Column_List">
         id,name,descr,img,price,unit,store,address,content,date
     </sql>
-
+<!---->
     <select id="selectAll" resultType="com.group2.foodsshare.entity.Goods">
         select
         <include refid="Base_Column_List" />

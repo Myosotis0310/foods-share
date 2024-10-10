@@ -4,7 +4,7 @@ import com.group2.foodsshare.entity.Admin;
 import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
-
+//
 /**
  * 操作admin相关数据接口
 */

@@ -26,7 +26,7 @@ public class LikesService {
         } else {
             likesMapper.insert(likes);
         }
-    }
+    }//
 
     public List<Likes> selectLikes(Integer fid, Integer userId, String module) {
         Likes likes = new Likes();

@@ -11,7 +11,7 @@ import javax.annotation.Resource;
 @RestController
 @RequestMapping("/collect")
 public class CollectController {
-
+//
     @Resource
     CollectService collectService;
 

@@ -22,7 +22,7 @@ import java.util.List;
  **/
 @Service
 public class AdminService {
-
+//
     @Resource
     private AdminMapper adminMapper;
 

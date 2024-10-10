@@ -4,7 +4,7 @@ package com.group2.foodsshare.mapper;
 import com.group2.foodsshare.entity.Category;
 
 import java.util.List;
-
+//
 /**
  * 操作category相关数据接口
 */

@@ -45,7 +45,7 @@ public class CommentService {
     public void deleteById(Integer id) {
         this.deepDelete(id);
     }
-
+//
     private void deepDelete(Integer pid) {
         List<Comment> children = commentMapper.selectByPid(pid);
         commentMapper.deleteById(pid);   // 先执行删除  再去找子节点  然后递归删除
